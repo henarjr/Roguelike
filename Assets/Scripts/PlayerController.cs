@@ -1,9 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class PlayerController : MonoBehaviour
 {
     private BoardManager m_Board;
     private Vector2Int m_CellPosition;
+
+    public void Spawn(BoardManager boardManager, Vector2Int cell)
+    {
+        m_Board = boardManager;
+        MoveTo(cell);
+    }
+
+    public void MoveTo(Vector2Int cell)
+    {
+        m_CellPosition = cell;
+        transform.position = m_Board.CellToWorld(m_CellPosition);
+    }
 
 
     private void Update()
@@ -39,19 +52,10 @@ public class PlayerController : MonoBehaviour
 
             if (cellData != null && cellData.Passable)
             {
-                m_CellPosition = newCellTarget;
-                transform.position = m_Board.CellToWorld(m_CellPosition);
+                GameManager.Instance.TurnManager.Tick();
+                MoveTo(newCellTarget);
             }
         }
-
     }
 
-    public void Spawn(BoardManager boardManager, Vector2Int cell)
-    {
-        m_Board = boardManager;
-        m_CellPosition = cell;
-
-        //let's move to the right position...
-        transform.position = m_Board.CellToWorld(cell);
-    }
 }
