@@ -328,6 +328,11 @@ MonoBehaviour:
   WallTiles:
   - {fileID: 11400000, guid: 2dc0b596b67200e41a8932bc3cda66ce, type: 2}
   - {fileID: 11400000, guid: deee7ffa172f71146a9f54c90626ba65, type: 2}
+  MinFood: 3
+  MaxFood: 7
+  FoodPrefabs:
+  - {fileID: 8654272131643850611, guid: 1adeab4ee06ca0d4cb121a9d14cf2f4c, type: 3}
+  - {fileID: 5752185733161039746, guid: de1b82da88aa568428feecc0585319af, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
